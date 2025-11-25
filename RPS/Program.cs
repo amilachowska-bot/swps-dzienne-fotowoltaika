@@ -12,12 +12,21 @@ string GetCorrectSign(string playerName)
     return sign;
 }
 
+string GetCorrectRandomSign(string playerName)
+{
+    int signIndex = Random.Shared.Next(allowedSigns.Count);
+    string sign = allowedSigns[signIndex];
+    Console.WriteLine($"{playerName} selected {sign}");
+
+    return sign;
+}
+
 const StringComparison stringComparison = StringComparison.OrdinalIgnoreCase;
 
 Console.WriteLine("Let's play Rock-Paper-Scissors!");
 
 string firstSign = GetCorrectSign("Player 1");
-string secondSign = GetCorrectSign("Player 2");
+string secondSign = GetCorrectRandomSign("Player 2");
 
 // 1. Pobierz indeks znaku podanego przez osobę drugą (np. 0, 1, 2) - nazwę to secondSignIndex
 int secondSignIndex = allowedSigns.IndexOf(secondSign);
