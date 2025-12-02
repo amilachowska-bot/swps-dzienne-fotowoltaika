@@ -22,29 +22,41 @@ string GetCorrectRandomSign(string playerName)
 }
 
 const StringComparison stringComparison = StringComparison.OrdinalIgnoreCase;
+int firstPlayerPoints = 0;
+int secondPlayerPoints = 0;
 
-Console.WriteLine("Let's play Rock-Paper-Scissors!");
-
-string firstSign = GetCorrectSign("Player 1");
-string secondSign = GetCorrectRandomSign("Player 2");
-
-// 1. Pobierz indeks znaku podanego przez osobę drugą (np. 0, 1, 2) - nazwę to secondSignIndex
-int secondSignIndex = allowedSigns.IndexOf(secondSign);
-// 2. Wylicz indeks znaku, który wygrywa z podanym przez osobę drugą - wzór - (secondSignIndex + 1) % rozmiarListy
-int winningSignIndex = (secondSignIndex + 1) % allowedSigns.Count;
-// 3. Czy indeks znaku podanego przez pierwszą osobę to indeks wyliczony w punkcie 2.
-int firstSignIndex = allowedSigns.IndexOf(firstSign);
-
-
-if (firstSign.Equals(secondSign, stringComparison))
+while (true)
 {
-    Console.WriteLine("It's a draw!");
-}
-else if (firstSignIndex == winningSignIndex)
-{
-    Console.WriteLine("First player won!");
-}
-else
-{
-    Console.WriteLine("Second player won!");
+    Console.WriteLine("Let's play Rock-Paper-Scissors!");
+
+    string firstSign = GetCorrectSign("Player 1");
+    string secondSign = GetCorrectRandomSign("Player 2");
+
+    // 1. Pobierz indeks znaku podanego przez osobę drugą (np. 0, 1, 2) - nazwę to secondSignIndex
+    int secondSignIndex = allowedSigns.IndexOf(secondSign);
+    // 2. Wylicz indeks znaku, który wygrywa z podanym przez osobę drugą - wzór - (secondSignIndex + 1) % rozmiarListy
+    int winningSignIndex = (secondSignIndex + 1) % allowedSigns.Count;
+    // 3. Czy indeks znaku podanego przez pierwszą osobę to indeks wyliczony w punkcie 2.
+    int firstSignIndex = allowedSigns.IndexOf(firstSign);
+
+
+    if (firstSign.Equals(secondSign, stringComparison))
+    {
+        Console.WriteLine("It's a draw!");
+    }
+    else if (firstSignIndex == winningSignIndex)
+    {
+        Console.WriteLine("First player won!");
+        // firstPlayerPoints = firstPlayerPoints + 1;
+        firstPlayerPoints += 1;
+        // firstPlayerPoints++;
+    }
+    else
+    {
+        Console.WriteLine("Second player won!");
+        secondPlayerPoints += 1;
+    }
+
+    Console.WriteLine($"First player: {firstPlayerPoints}");
+    Console.WriteLine($"Second player: {secondPlayerPoints}");
 }
