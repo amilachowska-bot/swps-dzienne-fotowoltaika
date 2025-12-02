@@ -25,7 +25,8 @@ const StringComparison stringComparison = StringComparison.OrdinalIgnoreCase;
 int firstPlayerPoints = 0;
 int secondPlayerPoints = 0;
 
-while (true)
+// graj, dopóki nikt nie otrzymał 3 punktów
+while (firstPlayerPoints < 3 && secondPlayerPoints < 3)
 {
     Console.WriteLine("Let's play Rock-Paper-Scissors!");
 
